@@ -14,11 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.camunda.impl.test.utils.junit5;
+package org.camunda.bpm.engine.test.junit5;
 
-import org.camunda.bpm.engine.test.Deployment;
-
-@Deployment
-public class ProcessEngineExtensionParentClassDeployment {
+public class ProcessEngineExtensionParentClass extends ProcessEngineExtensionSuperClass {
 
 }

@@ -14,8 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.camunda.impl.test.utils.junit5;
+package org.camunda.bpm.engine.test.junit5.deployment;
 
-public class ProcessEngineExtensionParentClass extends ProcessEngineExtensionSuperClass {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
+public class ProcessEngineExtensionDeploymentIdTest {
+
+  @RegisterExtension
+  CustomProcessEngineExtension extension =
+      (CustomProcessEngineExtension) CustomProcessEngineExtension.builder().build();
+
+  @Test
+  public void testDeploymentId() {
+    assertEquals("mockedDeploymentId", extension.getDeploymentId());
+  }
 
 }

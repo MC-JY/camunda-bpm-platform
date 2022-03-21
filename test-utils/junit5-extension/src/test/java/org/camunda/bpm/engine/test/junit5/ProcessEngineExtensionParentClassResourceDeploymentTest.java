@@ -14,29 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.camunda.impl.test.utils.junit5;
+package org.camunda.bpm.engine.test.junit5;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
 
+import org.assertj.core.api.Assertions;
 import org.camunda.bpm.engine.ProcessEngine;
-import org.camunda.bpm.engine.test.Deployment;
+import org.camunda.bpm.engine.repository.ProcessDefinition;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(ProcessEngineExtension.class)
-@Deployment
-public class ProcessEngineExtensionClassDeploymentTest {
+public class ProcessEngineExtensionParentClassResourceDeploymentTest extends ProcessEngineExtensionParentClass {
+  
+  ProcessEngine processEngine;
 
   @Test
-  public void testDeploymentOnClassLevel(ProcessEngine processEngine) {
-    assertNotNull(processEngine.getRepositoryService().createProcessDefinitionQuery().processDefinitionKey("testHelperDeploymentTest").singleResult(),
-        "No process deployed with class annotation");
-  }
-
-  @Test
-  @Deployment
-  public void testDeploymentOnMethodOverridesClass(ProcessEngine processEngine) {
-    assertNotNull(processEngine.getRepositoryService().createProcessDefinitionQuery().processDefinitionKey("testHelperDeploymentTestOverride").singleResult(),
-        "No process deployed for method");
+  public void testSuperClassResourcesDeployment() {
+    List<ProcessDefinition> processDefinitions = processEngine.getRepositoryService().createProcessDefinitionQuery().list();
+    Assertions.assertThat(processDefinitions).hasSize(2);
   }
 }

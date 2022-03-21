@@ -14,15 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.camunda.impl.test.utils.junit5.deployment;
+package org.camunda.bpm.engine.test.junit5.deployment;
 
-import org.camunda.impl.test.utils.junit5.ProcessEngineExtension;
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
-/**
- * @author Martin Schimak
- */
 public class ProcessEngineExtensionDeploymentIdAccess {
 
   @Test
