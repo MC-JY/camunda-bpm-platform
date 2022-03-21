@@ -277,7 +277,7 @@
 
         <module>clients/java</module>
 
-        <module>test-utils/sonatype-oss-release</module>
+        <module>test-utils/junit5-extension</module>
 
         <module>internal-dependencies</module>
         <module>database</module>
